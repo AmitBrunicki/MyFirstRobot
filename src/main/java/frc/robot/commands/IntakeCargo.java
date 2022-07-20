@@ -9,6 +9,7 @@ import frc.robot.subsystems.Storage;
 public class IntakeCargo extends SequentialCommandGroup {
 
     public IntakeCargo(Intake intake, Storage storage, Shooter shooter) {
+        int a;
         addCommands(
                 new ParallelCommandGroup(new intakeCommand(intake), new StorageCommand(storage)).withInterrupt(storage::getLimit),
                 new ParallelCommandGroup(new Shoot(shooter), new StorageCommand(storage)).withInterrupt(shooter::getLimit)
